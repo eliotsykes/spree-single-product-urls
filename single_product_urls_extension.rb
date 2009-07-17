@@ -1,7 +1,12 @@
+require_dependency 'application'
+
 class SingleProductUrlsExtension < Spree::Extension
   version "1.0"
-  description "Describe your extension here"
-  url "http://yourwebsite.com/single_product_urls"
+  description "To minimize duplicate content issues, gives each product a single
+    URL, the taxons with product URLs are redirected to the product URLs which 
+    contain no taxon information. Behaves like Amazon where products don't have 
+    breadcrumbs and taxons are shown under 'Look for similar items'."
+    url "http://github.com/single-product-urls"
 
   def activate
 
@@ -13,6 +18,19 @@ class SingleProductUrlsExtension < Spree::Extension
         crumb_list = content_tag(:ul, crumbs)
         content_tag(:div, crumb_list + content_tag(:br, nil, :class => 'clear'), :class => 'breadcrumbs')
       end
+    end
+    
+    ProductsController.class_eval do
+      append_before_filter :redirect_taxons_with_product_urls_to_product_url, :only => :show
+      
+      private
+      def redirect_taxons_with_product_urls_to_product_url
+        if @taxon
+          product = object
+          redirect_to product, :status=>301
+        end
+      end
+      
     end
 
   end
