@@ -6,7 +6,7 @@ class SingleProductUrlsExtension < Spree::Extension
     URL, the taxons with product URLs are redirected to the product URLs which 
     contain no taxon information. Behaves like Amazon where products don't have 
     breadcrumbs and taxons are shown under 'Look for similar items'."
-    url "http://github.com/single-product-urls"
+    url "http://github.com/eliotsykes/single-product-urls"
 
   def activate
 
