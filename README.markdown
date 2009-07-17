@@ -1,6 +1,6 @@
 = Spree Single Product Urls
 
-http://github.com/spree-single-product-urls
+http://github.com/eliotsykes/spree-single-product-urls
 
 An extension for Spree to minimize duplicate content issues by giving each 
 product a single URL.
