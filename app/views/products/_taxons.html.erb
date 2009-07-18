@@ -1,6 +1,6 @@
 <% if !@product.taxons.blank? %>
 <div id="taxon-crumbs">
-<h3>Look for similar items</h3>
+<h3><%= t('look_for_similar_items') %></h3>
   <% @product.taxons.each do |taxon| %>
     <%= taxon_crumbs(taxon) %>
   <% end %>
